@@ -46,12 +46,12 @@ log = logging.getLogger("glaido")
 SOURCES = [
     {
         "name": "Ben's Bites",
-        "rss":  "https://bensbites.beehiiv.com/feed",
-        "web":  "https://bensbites.beehiiv.com",
+        "rss":  "https://www.bensbites.com/feed",
+        "web":  "https://www.bensbites.com",
     },
     {
         "name": "The AI Rundown",
-        "rss":  "https://www.therundown.ai/feed",
+        "json": "https://www.therundown.ai/posts",
         "web":  "https://www.therundown.ai",
     },
 ]
@@ -178,6 +178,54 @@ def fetch_rss(source_cfg: dict) -> list[dict]:
     return articles
 
 
+def fetch_rundown_json(source_cfg: dict) -> list[dict]:
+    """
+    Specialized scraper for The AI Rundown leveraging their /posts JSON endpoint.
+    """
+    source_name = source_cfg["name"]
+    url = source_cfg["json"]
+    articles = []
+
+    log.info(f"[{source_name}] Fetching JSON → {url}")
+    try:
+        resp = requests.get(url, headers=HEADERS, timeout=REQUEST_TIMEOUT)
+        resp.raise_for_status()
+        data = resp.json()
+        
+        posts = data.get("posts", [])
+        for p in posts:
+            # Check if recent
+            updated_at = p.get("updated_at")
+            if not updated_at:
+                continue
+            
+            dt = datetime.fromisoformat(updated_at.replace("Z", "+00:00"))
+            if not is_recent(dt):
+                continue
+
+            slug = p.get("slug")
+            title = p.get("web_title") or p.get("title") or "Untitled"
+            summary = p.get("web_subtitle") or p.get("description") or ""
+            image_url = p.get("image_url")
+
+            if not slug:
+                continue
+
+            # Critical: Use the /p/ prefix for Rundown articles
+            full_url = f"https://www.therundown.ai/p/{slug}"
+
+            articles.append(make_article(
+                source_name, title, full_url, dt, summary, image_url
+            ))
+
+    except Exception as e:
+        log.warning(f"[{source_name}] JSON fetch failed: {e}")
+        return []
+
+    log.info(f"[{source_name}] Found {len(articles)} article(s) via JSON.")
+    return articles
+
+
 def fetch_web_fallback(source_cfg: dict) -> list[dict]:
     """
     HTML scraping fallback when RSS returns nothing.
@@ -246,9 +294,13 @@ def main():
     all_articles: list[dict] = []
 
     for source_cfg in SOURCES:
-        articles = fetch_rss(source_cfg)
+        articles = []
+        if "json" in source_cfg and source_cfg["name"] == "The AI Rundown":
+            articles = fetch_rundown_json(source_cfg)
+        elif "rss" in source_cfg:
+            articles = fetch_rss(source_cfg)
 
-        # Fallback to HTML if RSS returns nothing
+        # Fallback to HTML if others return nothing
         if not articles:
             articles = fetch_web_fallback(source_cfg)
 

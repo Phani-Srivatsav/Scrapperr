@@ -10,7 +10,7 @@
 // CONSTANTS & CONFIG
 // ═══════════════════════════════════════════════════
 
-const ARTICLES_PATH = '.tmp/articles.json';
+const ARTICLES_PATH = '/.tmp/articles.json';
 const STORAGE_KEY   = 'glaido_state';
 
 // Required fields per the gemini.md Scraper Output Payload schema
@@ -23,6 +23,7 @@ const REQUIRED_FIELDS = ['id', 'source', 'title', 'url', 'published_at', 'summar
 let state = {
   articles:     [],
   last_updated: null,
+  chart:        null, // Chart.js instance
 };
 
 let ui = {
@@ -70,7 +71,13 @@ const DOM = {
   detailSummary:   $('detail-summary'),
   detailLink:      $('detail-link'),
   detailSaveBtn:   $('detail-save-btn'),
-  panelOverlay:    $('panel-overlay'),
+  detailImgContainer: $('detail-image-container'),
+
+  // State elements
+  emptyState:      $('empty-state'),
+  errorState:      $('error-state'),
+  errorSub:        $('error-sub'),
+  staleBanner:     $('stale-banner'),
 };
 
 // ═══════════════════════════════════════════════════
@@ -170,21 +177,23 @@ async function loadArticles(isRefresh = false) {
 
     DOM.staleBanner.classList.add('hidden');
     renderAll();
+    updatePulseChart();
 
   } catch (err) {
+    console.error('Glaido: Load failed', err);
     if (err instanceof SchemaError) {
-      showError(err.message);
+      showError(`Schema Mismatch: ${err.message}`);
       return;
     }
-
-    // Network/fetch failure — try cache fallback
     const cached = loadFromStorage();
     if (cached && cached.articles && cached.articles.length > 0) {
-      state = cached;
+      state.articles = cached.articles;
+      state.last_updated = cached.last_updated;
       DOM.staleBanner.classList.remove('hidden');
       renderAll();
+      updatePulseChart();
     } else {
-      handleEmpty();
+      showError('Unable to synchronize. Please check logic/network.');
     }
   }
 }
@@ -326,25 +335,17 @@ function openDetail(id) {
   DOM.detailSummary.textContent   = article.summary;
   DOM.detailLink.href             = article.url;
 
-  // Image injection
-  let detailImgContainer = document.getElementById('detail-image-container');
-  if (!detailImgContainer) {
-    detailImgContainer = document.createElement('div');
-    detailImgContainer.id = 'detail-image-container';
-    DOM.detailTitle.insertAdjacentElement('afterend', detailImgContainer);
-  }
-  
   if (article.image_url) {
-    detailImgContainer.innerHTML = `<img src="${escHtml(article.image_url)}" class="detail-image" alt="Article banner">`;
+    DOM.detailImgContainer.innerHTML = `<img src="${escHtml(article.image_url)}" alt="Article banner">`;
   } else {
-    detailImgContainer.innerHTML = '';
+    DOM.detailImgContainer.innerHTML = '';
   }
 
   updateDetailSaveBtn(article.is_saved);
 
   DOM.detailPanel.classList.add('open');
   DOM.detailPanel.setAttribute('aria-hidden', 'false');
-  DOM.panelOverlay.classList.add('visible');
+  document.body.style.overflow = 'hidden'; // Lock background
 
   // Mark active card
   document.querySelectorAll('.article-card').forEach(c => c.classList.remove('active'));
@@ -355,7 +356,7 @@ function openDetail(id) {
 function closeDetail() {
   DOM.detailPanel.classList.remove('open');
   DOM.detailPanel.setAttribute('aria-hidden', 'true');
-  DOM.panelOverlay.classList.remove('visible');
+  document.body.style.overflow = ''; // Unlock background
   ui.activeArticleId = null;
   document.querySelectorAll('.article-card').forEach(c => c.classList.remove('active'));
 }
@@ -535,7 +536,9 @@ DOM.refreshBtn.addEventListener('click', async () => {
 
 // -- Detail close
 DOM.detailClose.addEventListener('click', closeDetail);
-DOM.panelOverlay.addEventListener('click', closeDetail);
+DOM.detailPanel.addEventListener('click', e => {
+  if (e.target === DOM.detailPanel) closeDetail();
+});
 
 // -- Detail save
 DOM.detailSaveBtn.addEventListener('click', () => {
@@ -548,10 +551,79 @@ document.addEventListener('keydown', e => {
 });
 
 // ═══════════════════════════════════════════════════
+// DATA VISUALIZATION (CHART.JS)
+// ═══════════════════════════════════════════════════
+
+function updatePulseChart() {
+  const ctx = $('pulse-chart')?.getContext('2d');
+  if (!ctx) return;
+
+  if (state.chart) state.chart.destroy();
+
+  const sourceCounts = {
+    "Ben's Bites": state.articles.filter(a => a.source === "Ben's Bites").length,
+    "The AI Rundown": state.articles.filter(a => a.source === "The AI Rundown").length
+  };
+
+  state.chart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: ["Ben's", "Rundown"],
+      datasets: [{
+        data: [sourceCounts["Ben's Bites"], sourceCounts["The AI Rundown"]],
+        backgroundColor: ['#BFF549', '#7C9EFF'],
+        borderWidth: 0,
+        hoverOffset: 4
+      }]
+    },
+    options: {
+      cutout: '75%',
+      plugins: {
+        legend: { display: false },
+        tooltip: { enabled: true }
+      },
+      responsive: true,
+      maintainAspectRatio: false
+    }
+  });
+}
+
+// ═══════════════════════════════════════════════════
+// PARALLAX SCROLL LOGIC
+// ═══════════════════════════════════════════════════
+
+function initParallax() {
+  const feed = DOM.feed;
+  feed.addEventListener('scroll', () => {
+    const cards = document.querySelectorAll('.article-card');
+    const scrollPos = feed.scrollTop;
+    const viewportH = feed.offsetHeight;
+
+    cards.forEach((card, index) => {
+      const rect = card.getBoundingClientRect();
+      const cardCenter = rect.top + rect.height / 2;
+      const viewCenter = viewportH / 2;
+      
+      // Calculate distance from center (-1 to 1)
+      const dist = (cardCenter - viewCenter) / (viewportH / 2);
+      
+      // Horizontal shift based on vertical position
+      // Creates a subtle "S" curve or alternating shift
+      const shift = Math.sin(dist * Math.PI) * 20; 
+      card.style.setProperty('--scroll-offset', `${shift}px`);
+      
+      // Optional: slight rotation or scale based on scroll
+      // card.style.transform = `translateX(${shift}px) rotate(${dist * 2}deg)`;
+    });
+  });
+}
+
+// ═══════════════════════════════════════════════════
 // BOOT
 // ═══════════════════════════════════════════════════
 
 (async function init() {
   updateDateStamp();
   await loadArticles();
+  initParallax();
 })();

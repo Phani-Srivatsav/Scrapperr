@@ -127,8 +127,9 @@ body {
 .enter-btn:hover {
   background: var(--accent);
   color: var(--bg);
-  box-shadow: 0 0 40px var(--accent-neon);
-  transform: translateY(-2px);
+  box-shadow: 0 0 50px var(--accent-neon);
+  transform: translateY(-2px) scale(1.08);
+  border-color: var(--accent);
 }
 
 .enter-btn-glitch {
