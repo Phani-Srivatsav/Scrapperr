@@ -1,0 +1,74 @@
+[
+  {
+    "id": "a1b2c3d4-0001-4000-8000-000000000001",
+    "source": "Ben's Bites",
+    "title": "OpenAI Releases GPT-4o Real-Time Voice Improvements",
+    "url": "https://bensbites.beehiiv.com/p/openai-gpt4o-voice",
+    "image_url": "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600&h=400",
+    "published_at": "2026-03-17T06:00:00Z",
+    "summary": "OpenAI has shipped a major update to its real-time voice API, dramatically cutting latency and adding emotional tone detection. Early testers report conversations that feel nearly indistinguishable from talking to a human. This follows months of internal testing and represents a step-change in voice AI capabilities. The update is rolling out to all API users over the next two weeks."
+  },
+  {
+    "id": "a1b2c3d4-0002-4000-8000-000000000002",
+    "source": "The AI Rundown",
+    "title": "Google DeepMind's Gemini 2.0 Tops Every Major Benchmark",
+    "url": "https://www.therundown.ai/p/gemini-2-benchmarks",
+    "image_url": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=600&h=400",
+    "published_at": "2026-03-17T05:30:00Z",
+    "summary": "Google DeepMind has quietly published benchmark results showing Gemini 2.0 Ultra outperforming all competitors on MMLU, HumanEval, and MATH. The model achieves 91.2% on MMLU, a new record. Industry watchers note this is the first time a Google model has led on coding benchmarks simultaneously. Full technical report expected later this week."
+  },
+  {
+    "id": "a1b2c3d4-0003-4000-8000-000000000003",
+    "source": "Ben's Bites",
+    "title": "Anthropic and Amazon Deepen Partnership with $4B Deal",
+    "url": "https://bensbites.beehiiv.com/p/anthropic-amazon-4b",
+    "image_url": "https://images.unsplash.com/photo-1620712948343-0056ce665268?auto=format&fit=crop&q=80&w=600&h=400",
+    "published_at": "2026-03-17T04:15:00Z",
+    "summary": "Amazon has completed its $4 billion investment in Anthropic, the Claude maker, with the AI firm agreeing to run its training and inference workloads exclusively on AWS Trainium chips. The deal includes a multi-year compute commitment and positions Anthropic as Amazon's preferred AI partner for enterprise offerings. Sources say the deal was accelerated following Microsoft's tightened agreement with OpenAI."
+  },
+  {
+    "id": "a1b2c3d4-0004-4000-8000-000000000004",
+    "source": "The AI Rundown",
+    "title": "Meta's LlaMA 4 Rumors: Open-Source, Multimodal, and Massive",
+    "url": "https://www.therundown.ai/p/meta-llama4-rumors",
+    "image_url": "https://images.unsplash.com/photo-1549692520-acc6669e2f0c?auto=format&fit=crop&q=80&w=600&h=400",
+    "published_at": "2026-03-17T03:00:00Z",
+    "summary": "Leaked internal roadmaps suggest Meta's upcoming LlaMA 4 family will include a 400B+ parameter model trained on video, audio, and text simultaneously. If accurate, this would be the largest openly released model to date. Meta appears to be doubling down on open-source to counter the growing enterprise lock-in from closed models. No official release date has been announced."
+  },
+  {
+    "id": "a1b2c3d4-0005-4000-8000-000000000005",
+    "source": "Ben's Bites",
+    "title": "Cursor Hits $1B ARR, Outpacing GitHub Copilot Growth",
+    "url": "https://bensbites.beehiiv.com/p/cursor-1b-arr",
+    "image_url": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=600&h=400",
+    "published_at": "2026-03-17T02:00:00Z",
+    "summary": "AI code editor Cursor has reportedly crossed $1 billion in annual recurring revenue, growing faster than any developer tool in history. The company, backed by Andreessen Horowitz, attributes the growth to its agent mode and tight IDE integration. Microsoft's GitHub Copilot still leads in total users but Cursor is winning on revenue per seat, commanding a $40/month professional tier."
+  },
+  {
+    "id": "a1b2c3d4-0006-4000-8000-000000000006",
+    "source": "The AI Rundown",
+    "title": "EU AI Act Enforcement Begins: What Companies Need to Know",
+    "url": "https://www.therundown.ai/p/eu-ai-act-enforcement",
+    "image_url": "https://images.unsplash.com/photo-1664575602276-acd073f104c1?auto=format&fit=crop&q=80&w=600&h=400",
+    "published_at": "2026-03-17T01:30:00Z",
+    "summary": "The European Union's AI Act has entered its enforcement phase, requiring all high-risk AI systems operating in the EU to maintain detailed audit logs, explainability reports, and undergo third-party conformity assessments. Companies have until June to comply or face fines up to 3% of global turnover. Several US tech firms have already hired EU compliance officers in anticipation."
+  },
+  {
+    "id": "a1b2c3d4-0007-4000-8000-000000000007",
+    "source": "Ben's Bites",
+    "title": "Sora Goes Pro: OpenAI Video Model Now Available to All",
+    "url": "https://bensbites.beehiiv.com/p/sora-pro-launch",
+    "image_url": "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80&w=600&h=400",
+    "published_at": "2026-03-17T00:00:00Z",
+    "summary": "OpenAI's Sora video generation model has exited its limited alpha and is now available to all ChatGPT Pro subscribers. The public launch includes a new 1080p mode, improved temporal consistency, and an API for developers. Early adopters are creating short films, product demos, and social ads. The model supports up to 60-second clips with text, image, or video prompts."
+  },
+  {
+    "id": "a1b2c3d4-0008-4000-8000-000000000008",
+    "source": "The AI Rundown",
+    "title": "Mistral Releases Mistral Next: The Smallest Frontier Model",
+    "url": "https://www.therundown.ai/p/mistral-next",
+    "image_url": null,
+    "published_at": "2026-03-16T22:00:00Z",
+    "summary": "French AI lab Mistral has released Mistral Next, a 7B parameter model that they claim matches GPT-4-class performance on coding and reasoning tasks through a novel synthetic data pipeline. The model runs on a single A100 GPU and is available under a permissive commercial license. This represents a major step toward affordable frontier-level AI at the edge."
+  }
+]

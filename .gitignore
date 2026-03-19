@@ -1,0 +1,25 @@
+# Node
+node_modules/
+.npm
+npm-debug.log*
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.env
+.venv
+env/
+venv/
+build/
+dist/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Project Specific
+# We keep .tmp/articles.json as it acts as initial seed data
+#!.tmp/articles.json
