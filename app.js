@@ -11,6 +11,7 @@
 // ═══════════════════════════════════════════════════
 
 const ARTICLES_PATH = '/.tmp/articles.json';
+const MODAL_API_URL = ''; // Set this to your Modal Deployment URL (e.g., https://username--glaido-scraper-get-articles.modal.run)
 const STORAGE_KEY   = 'glaido_state';
 
 // Required fields per the gemini.md Scraper Output Payload schema
@@ -135,7 +136,8 @@ async function loadArticles(isRefresh = false) {
   if (!isRefresh) showSkeletons();
 
   try {
-    const response = await fetch(`${ARTICLES_PATH}?t=${Date.now()}`);
+    const target = MODAL_API_URL || ARTICLES_PATH;
+    const response = await fetch(`${target}${target.includes('?') ? '&' : '?'}t=${Date.now()}`);
 
     if (!response.ok) {
       throw new Error(`HTTP ${response.status}`);
