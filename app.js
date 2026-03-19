@@ -11,7 +11,7 @@
 // ═══════════════════════════════════════════════════
 
 const ARTICLES_PATH = '/.tmp/articles.json';
-const MODAL_API_URL = ''; // Set this to your Modal Deployment URL (e.g., https://username--glaido-scraper-get-articles.modal.run)
+const MODAL_API_URL = 'https://gandephanisrivatsav--glaido-scraper-get-articles.modal.run';
 const STORAGE_KEY   = 'glaido_state';
 
 // Required fields per the gemini.md Scraper Output Payload schema

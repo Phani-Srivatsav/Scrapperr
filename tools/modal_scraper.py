@@ -16,7 +16,7 @@ volume = modal.Volume.from_name("glaido-data", create_if_missing=True)
 
 image = (
     modal.Image.debian_slim()
-    .pip_install("requests", "feedparser", "beautifulsoup4")
+    .pip_install("requests", "feedparser", "beautifulsoup4", "fastapi")
 )
 
 # ── Scraper Config ────────────────────────────────────────
