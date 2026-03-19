@@ -1,6 +1,15 @@
 [
   {
-    "id": "7de10c40-8d7c-41c8-ad0e-4c0c0a6e043c",
+    "id": "cc20584a-058a-4929-b2c2-b7e11ba265d9",
+    "source": "The Neuron",
+    "title": "NVIDIA's Open Model Super Panel Made a Strong Case for Open Agents",
+    "url": "https://www.theneuron.ai/explainer-articles/nvidias-open-model-super-panel-made-a-strong-case-for-open-agents/",
+    "image_url": null,
+    "published_at": "2026-03-19T11:17:35Z",
+    "summary": "NVIDIA's Open Model Super Panel was supposed to be about open models. It turned into something bigger: a public case for open agents, a new concept called \"harness engineering,\" and a vision of AI that actually does stuff instead of just answering questions."
+  },
+  {
+    "id": "3b5b9f8f-81b8-4358-badf-a39175e3ac32",
     "source": "The AI Rundown",
     "title": "Google bets on 'vibe design' with Stitch",
     "url": "https://www.therundown.ai/p/google-bets-on-vibe-design-with-stitch",
@@ -9,12 +18,183 @@
     "summary": "PLUS: Generate an actionable SEO audit using this LLM strategy"
   },
   {
-    "id": "a47b1c19-6c3b-411a-88cd-5cd2660250c4",
+    "id": "efe02c7f-62d5-4825-9772-953f9944e941",
     "source": "Ben's Bites",
     "title": "What makes a good AGENTS.md?",
     "url": "https://www.bensbites.com/p/what-makes-a-good-agentsmd",
     "image_url": null,
     "published_at": "2026-03-19T08:32:51Z",
     "summary": "run Claude Cowork from your mobile phone"
+  },
+  {
+    "id": "ca3bdf5a-5fc7-4a86-98b6-35f6e90861d9",
+    "source": "The Neuron",
+    "title": "😼 AI's Biggest Problem Just Changed. Nobody's Ready.",
+    "url": "https://www.theneuron.ai/newsletter/ai-s-biggest-problem-just-changed-nobody-s-ready/",
+    "image_url": null,
+    "published_at": "2026-03-19T04:45:11Z",
+    "summary": ""
+  },
+  {
+    "id": "00166180-dcac-49ed-9400-2c585e98a736",
+    "source": "AI News",
+    "title": "Visa prepares payment systems for AI agent-initiated transactions",
+    "url": "https://www.artificialintelligence-news.com/news/visa-prepares-payment-systems-for-ai-agent-initiated-transactions/",
+    "image_url": null,
+    "published_at": "2026-03-19T04:30:00Z",
+    "summary": "Payments rely on a simple model: a person decides to buy something, and a bank or card network processes the transaction. That model is starting to change as Visa tests how AI agents can initiate payments. New work in the banking sector suggests that, in some cases, software agents may soon take on that role. […] The post Visa prepares payment systems for AI agent-initiated transactions appeared first on AI News ."
+  },
+  {
+    "id": "1eab8825-c6a4-456b-b196-8cd96c2e9fff",
+    "source": "The Neuron",
+    "title": "The AI Skill That Replaced Prompt Engineering (And You're Already Using It)",
+    "url": "https://www.theneuron.ai/explainer-articles/the-ai-skill-that-replaced-prompt-engineering-and-youre-already-using-it/",
+    "image_url": null,
+    "published_at": "2026-03-19T04:12:09Z",
+    "summary": "Prompt engineering is dead. The skill that replaced it is something educators have taught for decades: metacognition. Here's why thinking about your own thinking is now the most valuable AI skill you can develop."
+  },
+  {
+    "id": "0c84b84b-ab0d-4058-b290-99ef882b1007",
+    "source": "AI News",
+    "title": "NVIDIA wants enterprise AI agents safer to deploy",
+    "url": "https://www.artificialintelligence-news.com/news/nvidia-agent-toolkit-enterprise-ai-agents/",
+    "image_url": null,
+    "published_at": "2026-03-19T02:30:00Z",
+    "summary": "The NVIDIA Agent Toolkit is Jensen Huang’s answer to the question enterprises keep asking: how do we put AI agents to work without losing control of our data and our liability? Announced at GTC 2026 in San Jose on March 16, the NVIDIA Agent Toolkit is an open-source software stack designed to help enterprises and […] The post NVIDIA wants enterprise AI agents safer to deploy appeared first on AI News ."
+  },
+  {
+    "id": "10f4cc1c-92ed-4671-9fc3-9368645100d1",
+    "source": "TLDR Tech",
+    "title": "Amazon vs USPS 📪, Google's vibe designer 🧑‍🎨, how Codex works 🤖",
+    "url": "https://tldr.tech/tech/2026-03-19",
+    "image_url": null,
+    "published_at": "2026-03-18T18:30:00Z",
+    "summary": ""
+  },
+  {
+    "id": "88839c01-c0ce-45c0-9edb-45e448bfb50f",
+    "source": "The AI Rundown",
+    "title": "Simo sounds alarm on OpenAI's 'side quests'",
+    "url": "https://www.therundown.ai/p/simo-sounds-alarm-on-openai-side-quests",
+    "image_url": "https://beehiiv-images-production.s3.amazonaws.com/uploads/asset/file/28661702-8c8e-4a1f-ab83-a288701f873d/export__1_.png?t=1773790655",
+    "published_at": "2026-03-18T10:02:00Z",
+    "summary": "PLUS: Generate a cohesive e-commerce product shoot"
+  },
+  {
+    "id": "b2af7cb5-30d7-49a7-9d59-8ef01d11c7ae",
+    "source": "AI News",
+    "title": "Mastercard keeps tabs on fraud with new foundation model",
+    "url": "https://www.artificialintelligence-news.com/news/mastercards-ltm-keeps-tabs-on-fraud-with-a-new-foundation-model/",
+    "image_url": null,
+    "published_at": "2026-03-18T10:01:00Z",
+    "summary": "Mastercard has developed a large tabular model (an LTM as opposed to an LLM) that’s trained on transaction data rather than text or images to help it address security and authenticity issues in digital payments. The company has trained a foundation model on billions of card transactions, with the intention of expanding to hundreds of […] The post Mastercard keeps tabs on fraud with new foundation model appeared first on AI News ."
+  },
+  {
+    "id": "d322e903-3f7b-47ae-a275-c59022222024",
+    "source": "AI News",
+    "title": "For effective AI, insurance needs to get its data house in order",
+    "url": "https://www.artificialintelligence-news.com/news/for-effective-ai-insurance-needs-a-better-data-layer-and-integration/",
+    "image_url": null,
+    "published_at": "2026-03-18T09:07:00Z",
+    "summary": "A report from Autorek, a provider of AI solutions to the insurance industry has produced a report that describes operational drag in companies’ internal processes that not only affect overall efficiency but cause an impediment to the effective implementation of AI in insurance concerns. Insurance Operations & Financial Transformation 2026 [email wall] draws from a […] The post For effective AI, insurance needs to get its data house in order appeared first on AI News ."
+  },
+  {
+    "id": "5ea9e835-1a8d-4976-a2ba-3aab19b2e1aa",
+    "source": "The Neuron",
+    "title": "😺 OpenAI gave GPT-5.4 Mini its own interns",
+    "url": "https://www.theneuron.ai/newsletter/openai-gave-gpt-5-4-mini-its-own-interns/",
+    "image_url": null,
+    "published_at": "2026-03-18T04:00:08Z",
+    "summary": ""
+  },
+  {
+    "id": "5db10766-1791-46a2-a724-524e5e2d4f9f",
+    "source": "TLDR Tech",
+    "title": "Amazon 1hr delivery 🚚, GPT-5.4 mini 🤖, how Anthropic uses Skills 👨‍💻",
+    "url": "https://tldr.tech/tech/2026-03-18",
+    "image_url": null,
+    "published_at": "2026-03-17T18:30:00Z",
+    "summary": ""
+  },
+  {
+    "id": "e893e13a-d132-4a8f-8486-90d095bbfd12",
+    "source": "The Neuron",
+    "title": "GPT 5.4 Mini & 5.4 Nano: OpenAI Built a Team of AI Interns for Your AI Boss",
+    "url": "https://www.theneuron.ai/explainer-articles/gpt-54-mini--54-nano-openai-built-a-team-of-ai-interns-for-your-ai-boss/",
+    "image_url": null,
+    "published_at": "2026-03-17T15:55:28Z",
+    "summary": "OpenAI released GPT-5.4 mini and nano, smaller models designed to work as subagents under the full GPT-5.4. The real story is what this reveals about where AI development is headed: teams of models, not single models, doing the work."
+  },
+  {
+    "id": "35fe09a1-c801-4359-b19f-a60c92a20acb",
+    "source": "The Neuron",
+    "title": "AI Economics 101: How AI Companies Make Money, Why Chips Are the Bottleneck, and What It All Means for Your Job",
+    "url": "https://www.theneuron.ai/explainer-articles/ai-economics-101-how-ai-companies-make-money-why-chips-are-the-bottleneck-and-what-it-all-means-for-your-job-/",
+    "image_url": null,
+    "published_at": "2026-03-17T13:37:25Z",
+    "summary": "We watched three of the most important conversations about AI's future, ran every number through a calculator, and came out with one question answered: how fast can this actually go?"
+  },
+  {
+    "id": "2508d5a0-4703-4b52-ba53-48f75d6d518c",
+    "source": "The AI Rundown",
+    "title": "Nvidia's big AI day at GTC",
+    "url": "https://www.therundown.ai/p/nvidia-big-ai-day-at-gtc",
+    "image_url": "https://beehiiv-images-production.s3.amazonaws.com/uploads/asset/file/fe8ec51a-323f-4488-ac9e-d2de34233dbf/jensenclaw.jpg?t=1773700609",
+    "published_at": "2026-03-17T10:02:53Z",
+    "summary": "PLUS: How to use Grok for free automated research"
+  },
+  {
+    "id": "e3557dd1-307c-434c-b7d3-2f87ede9bb42",
+    "source": "Ben's Bites",
+    "title": "Nvidia loves OpenClaw",
+    "url": "https://www.bensbites.com/p/nvidia-loves-openclaw",
+    "image_url": null,
+    "published_at": "2026-03-17T08:32:29Z",
+    "summary": "the era of vibe-coding is over"
+  },
+  {
+    "id": "decb576e-defe-45d8-a15b-1f82051ff7e2",
+    "source": "Ben's Bites",
+    "title": "this is a new format i'd like to try",
+    "url": "https://www.bensbites.com/p/this-is-a-new-format-id-like-to-try",
+    "image_url": null,
+    "published_at": "2026-03-17T08:03:34Z",
+    "summary": "do you prefer this or the original?"
+  },
+  {
+    "id": "a684349e-30d2-4d71-a9b1-5b2cc5e694ae",
+    "source": "AI News",
+    "title": "Trustpilot partners with AI companies as traditional search declines",
+    "url": "https://www.artificialintelligence-news.com/news/ai-in-ecommerce-trustpilot-partnerships-integration-news-trad-search-declines/",
+    "image_url": null,
+    "published_at": "2026-03-17T06:56:00Z",
+    "summary": "Trustpilot is reported to be pursuing partnerships with large eCommerce companies as AI-driven shopping gains traction. In an interview with Bloomberg News [paywall], chief executive Adrian Blair said that AI agents acting on behalf of consumers require lots of information about the businesses they’re willing to interact with. He said the most effective systems will […] The post Trustpilot partners with AI companies as traditional search declines appeared first on AI News ."
+  },
+  {
+    "id": "d2dedf8b-7177-4dc0-9908-d68cf57c6f95",
+    "source": "The Neuron",
+    "title": "😺 NVIDIA CEO: \"Every company needs an OpenClaw strategy\" now",
+    "url": "https://www.theneuron.ai/newsletter/nvidia-ceo-every-company-needs-an-openclaw-strategy-now/",
+    "image_url": null,
+    "published_at": "2026-03-17T04:30:13Z",
+    "summary": ""
+  },
+  {
+    "id": "dd247287-9f7b-40eb-8a34-bd81b0196352",
+    "source": "AI News",
+    "title": "Goldman Sachs sees AI investment shift to data centres",
+    "url": "https://www.artificialintelligence-news.com/news/goldman-sachs-sees-ai-investment-shift-to-data-centres/",
+    "image_url": null,
+    "published_at": "2026-03-17T04:30:00Z",
+    "summary": "Artificial intelligence investment is entering a more selective phase as companies and investors look beyond early excitement and focus on the data centre infrastructure required to run AI systems. Recent analysis from Goldman Sachs suggests the market is moving toward what the firm describes as a “flight to quality.” In practice, investors are paying closer […] The post Goldman Sachs sees AI investment shift to data centres appeared first on AI News ."
+  },
+  {
+    "id": "8f9982f8-6f48-4f6c-a782-6f8ed7cca2a2",
+    "source": "The Neuron",
+    "title": "Everything NVIDIA Just Announced at GTC 2026: Seven Chips, Five Racks, One Giant Bet on Agentic AI",
+    "url": "https://www.theneuron.ai/explainer-articles/everything-nvidia-just-announced-at-gtc-2026-seven-chips-five-racks-one-giant-bet-on-agentic-ai-/",
+    "image_url": null,
+    "published_at": "2026-03-16T20:03:51Z",
+    "summary": "Here's every major announcement from GTC 2026: Jensen Huang unveiled the Vera Rubin platform, Dynamo 1.0, DLSS 5, a robotaxi partnership with Uber, and much more."
   }
 ]

@@ -21,7 +21,7 @@ image = (
 
 # ── Scraper Config ────────────────────────────────────────
 REQUEST_TIMEOUT = 10
-LOOKBACK_HOURS = 24
+LOOKBACK_HOURS = 72
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
 }
@@ -36,6 +36,21 @@ SOURCES = [
         "name": "The AI Rundown",
         "json": "https://www.therundown.ai/posts",
         "web": "https://www.therundown.ai",
+    },
+    {
+        "name": "AI News",
+        "rss": "https://www.artificialintelligence-news.com/feed/",
+        "web": "https://www.artificialintelligence-news.com",
+    },
+    {
+        "name": "TLDR Tech",
+        "rss": "https://tldr.tech/rss",
+        "web": "https://tldr.tech",
+    },
+    {
+        "name": "The Neuron",
+        "rss": "https://www.theneuron.ai/feed",
+        "web": "https://www.theneuron.ai",
     },
 ]
 

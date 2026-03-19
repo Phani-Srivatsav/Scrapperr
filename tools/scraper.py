@@ -26,7 +26,7 @@ TMP_DIR     = BASE_DIR / ".tmp"
 OUTPUT_FILE = TMP_DIR / "articles.json"
 
 REQUEST_TIMEOUT   = 10       # seconds (per SOP)
-LOOKBACK_HOURS    = 24       # filter window (per SOP)
+LOOKBACK_HOURS    = 72       # filter window (per SOP)
 HEADERS = {
     "User-Agent": (
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
@@ -46,13 +46,28 @@ log = logging.getLogger("glaido")
 SOURCES = [
     {
         "name": "Ben's Bites",
-        "rss":  "https://www.bensbites.com/feed",
-        "web":  "https://www.bensbites.com",
+        "rss": "https://www.bensbites.com/feed",
+        "web": "https://www.bensbites.com",
     },
     {
         "name": "The AI Rundown",
         "json": "https://www.therundown.ai/posts",
-        "web":  "https://www.therundown.ai",
+        "web": "https://www.therundown.ai",
+    },
+    {
+        "name": "AI News",
+        "rss": "https://www.artificialintelligence-news.com/feed/",
+        "web": "https://www.artificialintelligence-news.com",
+    },
+    {
+        "name": "TLDR Tech",
+        "rss": "https://tldr.tech/rss",
+        "web": "https://tldr.tech",
+    },
+    {
+        "name": "The Neuron",
+        "rss": "https://www.theneuron.ai/feed",
+        "web": "https://www.theneuron.ai",
     },
 ]
 
