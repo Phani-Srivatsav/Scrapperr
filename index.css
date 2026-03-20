@@ -217,6 +217,9 @@ h2 { font-family: var(--font-heading); }
 .dot-all     { background: var(--text-tertiary); }
 .dot-bens    { background: var(--accent); }
 .dot-rundown { background: #7C9EFF; }
+.dot-ainews  { background: #FF9F43; } /* Orange */
+.dot-tldr    { background: #54A0FF; } /* Blue */
+.dot-neuron  { background: #EE5253; } /* Red */
 .source-item.active .dot-all { background: var(--accent); }
 
 .source-count {

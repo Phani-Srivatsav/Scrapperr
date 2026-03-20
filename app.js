@@ -60,8 +60,14 @@ const DOM = {
   srcAll:          $('src-all'),
   srcBens:         $('src-bens'),
   srcRundown:      $('src-rundown'),
+  srcAINews:       $('src-ainews'),
+  srcTLDR:         $('src-tldr'),
+  srcNeuron:       $('src-neuron'),
   countBens:       $('count-bens'),
   countRundown:    $('count-rundown'),
+  countAINews:     $('count-ainews'),
+  countTLDR:       $('count-tldr'),
+  countNeuron:     $('count-neuron'),
 
   // Detail panel
   detailPanel:     $('detail-panel'),
@@ -179,7 +185,6 @@ async function loadArticles(isRefresh = false) {
 
     DOM.staleBanner.classList.add('hidden');
     renderAll();
-    updatePulseChart();
 
   } catch (err) {
     console.error('Glaido: Load failed', err);
@@ -193,7 +198,6 @@ async function loadArticles(isRefresh = false) {
       state.last_updated = cached.last_updated;
       DOM.staleBanner.classList.remove('hidden');
       renderAll();
-      updatePulseChart();
     } else {
       showError('Unable to synchronize. Please check logic/network.');
     }
@@ -307,15 +311,27 @@ function getFilteredArticles() {
 }
 
 function updateCounts() {
+  const counts = {
+    "Ben's Bites": state.articles.filter(a => a.source === "Ben's Bites").length,
+    "The AI Rundown": state.articles.filter(a => a.source === "The AI Rundown").length,
+    "AI News": state.articles.filter(a => a.source === "AI News").length,
+    "TLDR Tech": state.articles.filter(a => a.source === "TLDR Tech").length,
+    "The Neuron": state.articles.filter(a => a.source === "The Neuron").length
+  };
+
   const all   = state.articles.length;
   const saved = state.articles.filter(a => a.is_saved).length;
-  const bens  = state.articles.filter(a => a.source === "Ben's Bites").length;
-  const run   = state.articles.filter(a => a.source === "The AI Rundown").length;
 
   DOM.countAll.textContent     = all;
   DOM.countSaved.textContent   = saved;
-  DOM.countBens.textContent    = bens;
-  DOM.countRundown.textContent = run;
+
+  if (DOM.countBens)    DOM.countBens.textContent    = counts["Ben's Bites"];
+  if (DOM.countRundown) DOM.countRundown.textContent = counts["The AI Rundown"];
+  if (DOM.countAINews)  DOM.countAINews.textContent  = counts["AI News"];
+  if (DOM.countTLDR)    DOM.countTLDR.textContent    = counts["TLDR Tech"];
+  if (DOM.countNeuron)  DOM.countNeuron.textContent  = counts["The Neuron"];
+
+  updatePulseChart(counts);
 }
 
 // ═══════════════════════════════════════════════════
@@ -491,7 +507,10 @@ function updateDateStamp() {
 function getSourceClass(source) {
   if (source === "Ben's Bites")       return 'tag-bens';
   if (source === "The AI Rundown")    return 'tag-rundown';
-  return 'tag-bens';
+  if (source === "AI News")           return 'tag-ainews';
+  if (source === "TLDR Tech")         return 'tag-tldr';
+  if (source === "The Neuron")        return 'tag-neuron';
+  return 'tag-generic';
 }
 
 function escHtml(str) {
@@ -518,12 +537,16 @@ function escHtml(str) {
 });
 
 // -- Source filter
-[DOM.srcAll, DOM.srcBens, DOM.srcRundown].forEach(btn => {
+[DOM.srcAll, DOM.srcBens, DOM.srcRundown, DOM.srcAINews, DOM.srcTLDR, DOM.srcNeuron].forEach(btn => {
+  if (!btn) return;
   btn.addEventListener('click', () => {
     ui.activeSource = btn.dataset.source;
     DOM.srcAll.classList.toggle('active',     ui.activeSource === 'all');
     DOM.srcBens.classList.toggle('active',    ui.activeSource === "Ben's Bites");
     DOM.srcRundown.classList.toggle('active', ui.activeSource === "The AI Rundown");
+    DOM.srcAINews.classList.toggle('active',  ui.activeSource === "AI News");
+    DOM.srcTLDR.classList.toggle('active',    ui.activeSource === "TLDR Tech");
+    DOM.srcNeuron.classList.toggle('active',  ui.activeSource === "The Neuron");
     closeDetail();
     renderAll();
   });
@@ -556,24 +579,28 @@ document.addEventListener('keydown', e => {
 // DATA VISUALIZATION (CHART.JS)
 // ═══════════════════════════════════════════════════
 
-function updatePulseChart() {
+function updatePulseChart(counts) {
   const ctx = $('pulse-chart')?.getContext('2d');
-  if (!ctx) return;
+  if (!ctx || !counts) return;
 
   if (state.chart) state.chart.destroy();
 
-  const sourceCounts = {
-    "Ben's Bites": state.articles.filter(a => a.source === "Ben's Bites").length,
-    "The AI Rundown": state.articles.filter(a => a.source === "The AI Rundown").length
-  };
+  const labels = ["Ben's", "Rundown", "AI News", "TLDR", "Neuron"];
+  const dataset = [
+    counts["Ben's Bites"] || 0,
+    counts["The AI Rundown"] || 0,
+    counts["AI News"] || 0,
+    counts["TLDR Tech"] || 0,
+    counts["The Neuron"] || 0
+  ];
 
   state.chart = new Chart(ctx, {
     type: 'doughnut',
     data: {
-      labels: ["Ben's", "Rundown"],
+      labels: labels,
       datasets: [{
-        data: [sourceCounts["Ben's Bites"], sourceCounts["The AI Rundown"]],
-        backgroundColor: ['#BFF549', '#7C9EFF'],
+        data: dataset,
+        backgroundColor: ['#BFF549', '#7C9EFF', '#FF9F43', '#54A0FF', '#EE5253'],
         borderWidth: 0,
         hoverOffset: 4
       }]
